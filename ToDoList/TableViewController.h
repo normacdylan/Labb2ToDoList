@@ -1,5 +1,5 @@
 //
-//  ViewController.h
+//  TableViewController.h
 //  ToDoList
 //
 //  Created by August Posner on 2018-01-30.
@@ -8,8 +8,6 @@
 
 #import <UIKit/UIKit.h>
 
-@interface ViewController : UIViewController
-
+@interface TableViewController : UITableViewController
 
 @end
-

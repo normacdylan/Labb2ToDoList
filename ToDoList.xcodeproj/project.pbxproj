@@ -8,24 +8,30 @@
 
 /* Begin PBXBuildFile section */
 		724A0C2D2020616800D73287 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 724A0C2C2020616800D73287 /* AppDelegate.m */; };
-		724A0C302020616800D73287 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 724A0C2F2020616800D73287 /* ViewController.m */; };
 		724A0C332020616900D73287 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 724A0C312020616900D73287 /* Main.storyboard */; };
 		724A0C352020616900D73287 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 724A0C342020616900D73287 /* Assets.xcassets */; };
 		724A0C382020616900D73287 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 724A0C362020616900D73287 /* LaunchScreen.storyboard */; };
 		724A0C3B2020616900D73287 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 724A0C3A2020616900D73287 /* main.m */; };
+		724A0C43202093C000D73287 /* TableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 724A0C42202093C000D73287 /* TableViewController.m */; };
+		724A0C462020963400D73287 /* Task.m in Sources */ = {isa = PBXBuildFile; fileRef = 724A0C452020963400D73287 /* Task.m */; };
+		724A0C4920209A6D00D73287 /* TaskController.m in Sources */ = {isa = PBXBuildFile; fileRef = 724A0C4820209A6D00D73287 /* TaskController.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		724A0C282020616800D73287 /* ToDoList.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ToDoList.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		724A0C2B2020616800D73287 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		724A0C2C2020616800D73287 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
-		724A0C2E2020616800D73287 /* ViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ViewController.h; sourceTree = "<group>"; };
-		724A0C2F2020616800D73287 /* ViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ViewController.m; sourceTree = "<group>"; };
 		724A0C322020616900D73287 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		724A0C342020616900D73287 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		724A0C372020616900D73287 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		724A0C392020616900D73287 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		724A0C3A2020616900D73287 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		724A0C41202093C000D73287 /* TableViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TableViewController.h; sourceTree = "<group>"; };
+		724A0C42202093C000D73287 /* TableViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TableViewController.m; sourceTree = "<group>"; };
+		724A0C442020963400D73287 /* Task.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Task.h; sourceTree = "<group>"; };
+		724A0C452020963400D73287 /* Task.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = Task.m; sourceTree = "<group>"; };
+		724A0C4720209A6D00D73287 /* TaskController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TaskController.h; sourceTree = "<group>"; };
+		724A0C4820209A6D00D73287 /* TaskController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TaskController.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -60,13 +66,17 @@
 			children = (
 				724A0C2B2020616800D73287 /* AppDelegate.h */,
 				724A0C2C2020616800D73287 /* AppDelegate.m */,
-				724A0C2E2020616800D73287 /* ViewController.h */,
-				724A0C2F2020616800D73287 /* ViewController.m */,
 				724A0C312020616900D73287 /* Main.storyboard */,
 				724A0C342020616900D73287 /* Assets.xcassets */,
 				724A0C362020616900D73287 /* LaunchScreen.storyboard */,
 				724A0C392020616900D73287 /* Info.plist */,
 				724A0C3A2020616900D73287 /* main.m */,
+				724A0C41202093C000D73287 /* TableViewController.h */,
+				724A0C42202093C000D73287 /* TableViewController.m */,
+				724A0C442020963400D73287 /* Task.h */,
+				724A0C452020963400D73287 /* Task.m */,
+				724A0C4720209A6D00D73287 /* TaskController.h */,
+				724A0C4820209A6D00D73287 /* TaskController.m */,
 			);
 			path = ToDoList;
 			sourceTree = "<group>";
@@ -142,9 +152,11 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				724A0C302020616800D73287 /* ViewController.m in Sources */,
+				724A0C4920209A6D00D73287 /* TaskController.m in Sources */,
+				724A0C462020963400D73287 /* Task.m in Sources */,
 				724A0C3B2020616900D73287 /* main.m in Sources */,
 				724A0C2D2020616800D73287 /* AppDelegate.m in Sources */,
+				724A0C43202093C000D73287 /* TableViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
