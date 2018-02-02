@@ -11,7 +11,7 @@
 
 @interface TaskController ()
 @property (weak, nonatomic) IBOutlet UITextField *titleEdit;
-@property (weak, nonatomic) IBOutlet UITextView *specificationEdit;
+@property (weak, nonatomic) IBOutlet UITextField *specificationEdit;
 @property (weak, nonatomic) IBOutlet UIDatePicker *datePicker;
 @property (weak, nonatomic) IBOutlet UISwitch *prioritySwitch;
 @property (weak, nonatomic) IBOutlet UIButton *addButton;
@@ -23,6 +23,8 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
+    self.titleEdit.delegate = self;
+    self.specificationEdit.delegate = self;
 }
 
 - (void)didReceiveMemoryWarning {
@@ -41,14 +43,20 @@
 
 - (IBAction)pressedAdd:(id)sender {
     [self addTask];
-    [self setReadOnly];
+//    [self setReadOnly];
+    [self.navigationController popViewControllerAnimated:YES];
+}
+
+- (BOOL)textFieldShouldReturn:(UITextField *)textField {
+    [textField resignFirstResponder];
+    return YES;
 }
 
 - (void) setReadOnly {
     [self.addButton setHidden:YES];
     [self.prioritySwitch setEnabled:NO];
     [self.titleEdit setEnabled:NO];
-    [self.specificationEdit setEditable:NO];
+    [self.specificationEdit setEnabled:NO];
     [self.datePicker setEnabled:NO];
 }
 

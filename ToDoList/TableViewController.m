@@ -66,8 +66,6 @@
    
     NSDictionary *encodedTask = [DBHandler loadTask:(int)indexPath.row finished:indexPath.section==0];
     
-//   cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:@"taskCell"];
-    
     cell.textLabel.text = [[encodedTask objectForKey:@"highPriority"] boolValue]==NO?
             [encodedTask objectForKey:@"title"] :
             [[encodedTask objectForKey:@"title"] stringByAppendingString:@" [Prio]"];
@@ -77,10 +75,10 @@
     [df setDateFormat:@"MM/dd/yyyy"];
     NSString *dateString = [df stringFromDate:[encodedTask objectForKey:@"date"]];
     NSString *deadLine = [@"Deadline: " stringByAppendingString: dateString];
-//    cell.detailTextLabel.text = deadLine;
+    cell.detailTextLabel.text = deadLine;
     
     if ([[encodedTask objectForKey:@"finished"] boolValue]==YES)
-        cell.accessoryType = UITableViewCellAccessoryCheckmark ;
+        cell.accessoryType = UITableViewCellAccessoryCheckmark;
     
     return cell;
 }
@@ -122,15 +120,6 @@
 
 
 #pragma mark - Navigation
-/*
-- (void) tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
-{
-    // access the cell via indexPath, do whatever you need to prepare the segue. Then:
-    
-    [self performSegueWithIdentifier:@"Students" sender:nil];
-}
-*/
-
 // In a storyboard-based application, you will often want to do a little preparation before navigation
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
     NSIndexPath *indexPath = [self.tableView indexPathForSelectedRow];
