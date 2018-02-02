@@ -43,21 +43,12 @@
 
 - (IBAction)pressedAdd:(id)sender {
     [self addTask];
-//    [self setReadOnly];
     [self.navigationController popViewControllerAnimated:YES];
 }
 
 - (BOOL)textFieldShouldReturn:(UITextField *)textField {
     [textField resignFirstResponder];
     return YES;
-}
-
-- (void) setReadOnly {
-    [self.addButton setHidden:YES];
-    [self.prioritySwitch setEnabled:NO];
-    [self.titleEdit setEnabled:NO];
-    [self.specificationEdit setEnabled:NO];
-    [self.datePicker setEnabled:NO];
 }
 
 /*

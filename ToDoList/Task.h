@@ -17,5 +17,5 @@
 
 - (instancetype)initWithTitle:(NSString*)title specification:(NSString*) specification highPriority:(BOOL) highPriority date:(NSDate*) date;
 - (NSDictionary*) taskToDictionary;
-+ (Task*) dictionaryToTask:(NSDictionary*) input;
+
 @end

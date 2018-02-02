@@ -50,7 +50,6 @@
 }
 - (IBAction)pressedDone:(id)sender {
     [DBHandler finishTask:self.taskIndex];
-    self.doneButton.enabled = NO;
     [self.navigationController popViewControllerAnimated:YES];
 }
 
