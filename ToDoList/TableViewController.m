@@ -7,10 +7,11 @@
 //
 
 #import "TableViewController.h"
-#import "Task.h"
+#import "DBHandler.h"
+#import "DetailViewController.h"
+#import "TaskController.h"
 
 @interface TableViewController ()
-@property (nonatomic) NSMutableArray *tasks;
 @end
 
 @implementation TableViewController
@@ -22,10 +23,11 @@
     // self.clearsSelectionOnViewWillAppear = NO;
     
     // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
-    // self.navigationItem.rightBarButtonItem = self.editButtonItem;
-    
-    NSUserDefaults *savedData = [NSUserDefaults standardUserDefaults];
-    self.tasks = [savedData objectForKey:@"savedData"];
+     self.navigationItem.leftBarButtonItem = self.editButtonItem;
+}
+
+- (void) viewWillAppear:(BOOL)animated {
+    [self.tableView reloadData];
 }
 
 - (void)didReceiveMemoryWarning {
@@ -34,21 +36,52 @@
 }
 
 #pragma mark - Table view data source
-
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
-    return 1;
+    return 2;
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-    return self.tasks.count;
+    return [DBHandler loadTasks:section==0].count;
+}
+
+- (NSString *)tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section {
+    NSString *sectionName;
+    switch (section) {
+        case 0:
+            sectionName = NSLocalizedString(@"Finished tasks", @"Finished tasks");
+            break;
+        case 1:
+            sectionName = NSLocalizedString(@"Unfinished tasks", @"Unfinished tasks");
+            break;
+        default:
+            sectionName = @"";
+            break;
+    }
+    return sectionName;
 }
 
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"taskCell" forIndexPath:indexPath];
+   
+    NSDictionary *encodedTask = [DBHandler loadTask:(int)indexPath.row finished:indexPath.section==0];
     
-    Task *task = self.tasks[indexPath.row];
-    cell.textLabel.text = task.title;
+//   cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:@"taskCell"];
+    
+    cell.textLabel.text = [[encodedTask objectForKey:@"highPriority"] boolValue]==NO?
+            [encodedTask objectForKey:@"title"] :
+            [[encodedTask objectForKey:@"title"] stringByAppendingString:@" [Prio]"];
+    
+    //skapa metod i dbhandler för datumkonvertering?
+    NSDateFormatter* df = [[NSDateFormatter alloc]init];
+    [df setDateFormat:@"MM/dd/yyyy"];
+    NSString *dateString = [df stringFromDate:[encodedTask objectForKey:@"date"]];
+    NSString *deadLine = [@"Deadline: " stringByAppendingString: dateString];
+//    cell.detailTextLabel.text = deadLine;
+    
+    if ([[encodedTask objectForKey:@"finished"] boolValue]==YES)
+        cell.accessoryType = UITableViewCellAccessoryCheckmark ;
+    
     return cell;
 }
 
@@ -57,21 +90,21 @@
 // Override to support conditional editing of the table view.
 - (BOOL)tableView:(UITableView *)tableView canEditRowAtIndexPath:(NSIndexPath *)indexPath {
     // Return NO if you do not want the specified item to be editable.
+    
     return YES;
 }
 */
 
-/*
-// Override to support editing the table view.
 - (void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath {
     if (editingStyle == UITableViewCellEditingStyleDelete) {
         // Delete the row from the data source
+        [DBHandler deleteTask:(int)indexPath.row finished:indexPath.section==0];
         [tableView deleteRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationFade];
     } else if (editingStyle == UITableViewCellEditingStyleInsert) {
         // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view
     }   
 }
-*/
+
 
 /*
 // Override to support rearranging the table view.
@@ -87,14 +120,26 @@
 }
 */
 
-/*
+
 #pragma mark - Navigation
+/*
+- (void) tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    // access the cell via indexPath, do whatever you need to prepare the segue. Then:
+    
+    [self performSegueWithIdentifier:@"Students" sender:nil];
+}
+*/
 
 // In a storyboard-based application, you will often want to do a little preparation before navigation
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
+    NSIndexPath *indexPath = [self.tableView indexPathForSelectedRow];
+    if ([segue.identifier isEqualToString:@"DetailSegue"]) {
+        DetailViewController *detail = [segue destinationViewController];
+        detail.taskIndex = (int)indexPath.row;
+        detail.finishedTask = indexPath.section==0;
+    }
 }
-*/
+
 
 @end

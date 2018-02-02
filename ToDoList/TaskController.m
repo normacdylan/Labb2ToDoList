@@ -7,13 +7,14 @@
 //
 
 #import "TaskController.h"
-#import "Task.h"
+#import "DBHandler.h"
 
 @interface TaskController ()
 @property (weak, nonatomic) IBOutlet UITextField *titleEdit;
 @property (weak, nonatomic) IBOutlet UITextView *specificationEdit;
 @property (weak, nonatomic) IBOutlet UIDatePicker *datePicker;
 @property (weak, nonatomic) IBOutlet UISwitch *prioritySwitch;
+@property (weak, nonatomic) IBOutlet UIButton *addButton;
 
 @end
 
@@ -29,28 +30,26 @@
     // Dispose of any resources that can be recreated.
 }
 
-- (Task*) createTask {
+- (void) addTask {
     NSString *title = self.titleEdit.text;
     NSString *specification = self.specificationEdit.text;
     BOOL highPriority = self.prioritySwitch.isOn;
     NSDate *date = self.datePicker.date;
-    Task *task = [[Task alloc] initWithTitle:title specification:specification highPriority:highPriority date:date];
-    return task;
-}
-
-- (void) saveTask:(Task*) task{
-    NSUserDefaults *savedData = [NSUserDefaults standardUserDefaults];
-    NSMutableArray *data = [[NSMutableArray alloc] init];
- //   if ([savedData objectForKey:@"savedData"] != nil)
- //       data = [savedData objectForKey:@"savedData"];
-    [data addObject:task];
-    [savedData setObject:data forKey:@"savedData"];
-    [savedData synchronize];
+    
+    [DBHandler addTaskWithTitle:title specification:specification highPriority:highPriority date:date];
 }
 
 - (IBAction)pressedAdd:(id)sender {
-    Task *task = [self createTask];
-    [self saveTask:task];
+    [self addTask];
+    [self setReadOnly];
+}
+
+- (void) setReadOnly {
+    [self.addButton setHidden:YES];
+    [self.prioritySwitch setEnabled:NO];
+    [self.titleEdit setEnabled:NO];
+    [self.specificationEdit setEditable:NO];
+    [self.datePicker setEnabled:NO];
 }
 
 /*

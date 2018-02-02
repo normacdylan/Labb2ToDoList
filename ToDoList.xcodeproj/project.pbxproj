@@ -15,6 +15,8 @@
 		724A0C43202093C000D73287 /* TableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 724A0C42202093C000D73287 /* TableViewController.m */; };
 		724A0C462020963400D73287 /* Task.m in Sources */ = {isa = PBXBuildFile; fileRef = 724A0C452020963400D73287 /* Task.m */; };
 		724A0C4920209A6D00D73287 /* TaskController.m in Sources */ = {isa = PBXBuildFile; fileRef = 724A0C4820209A6D00D73287 /* TaskController.m */; };
+		724A0C4E2023B42F00D73287 /* DBHandler.m in Sources */ = {isa = PBXBuildFile; fileRef = 724A0C4D2023B42F00D73287 /* DBHandler.m */; };
+		724A0C512023BF0800D73287 /* DetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 724A0C502023BF0800D73287 /* DetailViewController.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -32,6 +34,10 @@
 		724A0C452020963400D73287 /* Task.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = Task.m; sourceTree = "<group>"; };
 		724A0C4720209A6D00D73287 /* TaskController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TaskController.h; sourceTree = "<group>"; };
 		724A0C4820209A6D00D73287 /* TaskController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TaskController.m; sourceTree = "<group>"; };
+		724A0C4C2023B42F00D73287 /* DBHandler.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DBHandler.h; sourceTree = "<group>"; };
+		724A0C4D2023B42F00D73287 /* DBHandler.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DBHandler.m; sourceTree = "<group>"; };
+		724A0C4F2023BF0800D73287 /* DetailViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DetailViewController.h; sourceTree = "<group>"; };
+		724A0C502023BF0800D73287 /* DetailViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DetailViewController.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -77,6 +83,10 @@
 				724A0C452020963400D73287 /* Task.m */,
 				724A0C4720209A6D00D73287 /* TaskController.h */,
 				724A0C4820209A6D00D73287 /* TaskController.m */,
+				724A0C4C2023B42F00D73287 /* DBHandler.h */,
+				724A0C4D2023B42F00D73287 /* DBHandler.m */,
+				724A0C4F2023BF0800D73287 /* DetailViewController.h */,
+				724A0C502023BF0800D73287 /* DetailViewController.m */,
 			);
 			path = ToDoList;
 			sourceTree = "<group>";
@@ -154,9 +164,11 @@
 			files = (
 				724A0C4920209A6D00D73287 /* TaskController.m in Sources */,
 				724A0C462020963400D73287 /* Task.m in Sources */,
+				724A0C4E2023B42F00D73287 /* DBHandler.m in Sources */,
 				724A0C3B2020616900D73287 /* main.m in Sources */,
 				724A0C2D2020616800D73287 /* AppDelegate.m in Sources */,
 				724A0C43202093C000D73287 /* TableViewController.m in Sources */,
+				724A0C512023BF0800D73287 /* DetailViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -291,6 +303,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = P9CDQNRLBP;
 				INFOPLIST_FILE = ToDoList/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = AP.ToDoList;
@@ -304,6 +317,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = P9CDQNRLBP;
 				INFOPLIST_FILE = ToDoList/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = AP.ToDoList;
