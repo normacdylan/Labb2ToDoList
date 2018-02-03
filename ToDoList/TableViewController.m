@@ -79,6 +79,8 @@
     
     if ([[encodedTask objectForKey:@"finished"] boolValue]==YES)
         cell.accessoryType = UITableViewCellAccessoryCheckmark;
+    else
+        cell.accessoryType = UITableViewCellAccessoryNone;
     
     return cell;
 }

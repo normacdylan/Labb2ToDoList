@@ -52,7 +52,7 @@
                             <outlet property="delegate" destination="KbG-cA-Qyv" id="B3S-Iy-C4h"/>
                         </connections>
                     </tableView>
-                    <navigationItem key="navigationItem" title="Tasks" id="CnH-uH-aTG">
+                    <navigationItem key="navigationItem" title="To Do" id="CnH-uH-aTG">
                         <barButtonItem key="rightBarButtonItem" systemItem="add" id="mcq-Tt-iUb">
                             <connections>
                                 <segue destination="MAc-dx-gRD" kind="show" identifier="AddSegue" id="QAs-9W-iVg"/>
@@ -125,12 +125,12 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <textField opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="bezel" placeholder="What to do?" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="zB2-cd-qn7">
+                            <textField opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="bezel" placeholder="What to do?" textAlignment="natural" clearsOnBeginEditing="YES" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="zB2-cd-qn7">
                                 <rect key="frame" x="16" y="136" width="343" height="30"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <nil key="textColor"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <textInputTraits key="textInputTraits" returnKeyType="done"/>
+                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences" returnKeyType="done"/>
                             </textField>
                             <datePicker contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" datePickerMode="date" minuteInterval="5" translatesAutoresizingMaskIntoConstraints="NO" id="dw5-IC-Oqx">
                                 <rect key="frame" x="0.0" y="341" width="375" height="162"/>
@@ -161,12 +161,12 @@
                                     <action selector="pressedAdd:" destination="MAc-dx-gRD" eventType="touchUpInside" id="4gZ-Eu-Gfx"/>
                                 </connections>
                             </button>
-                            <textField opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="bezel" placeholder="Further details (optional)" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Qac-yB-Q4r">
+                            <textField opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="bezel" placeholder="Further details (optional)" textAlignment="natural" clearsOnBeginEditing="YES" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Qac-yB-Q4r">
                                 <rect key="frame" x="16" y="189" width="343" height="101"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <nil key="textColor"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <textInputTraits key="textInputTraits" returnKeyType="done"/>
+                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences" returnKeyType="done"/>
                             </textField>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
