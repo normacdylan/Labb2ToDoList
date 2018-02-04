@@ -24,8 +24,20 @@
 }
 
 - (NSDictionary*) taskToDictionary {
-    NSDictionary *result = @{@"title":self.title, @"specification":self.specification, @"highPriority":[NSNumber numberWithBool:self.highPriority], @"finished":[NSNumber numberWithBool:self.finished], @"date":self.date};
+    NSDictionary *result = @{@"title":self.title, @"specification":self.specification, @"highPriority":[NSNumber numberWithBool:self.highPriority], @"finished":[NSNumber numberWithBool:self.finished], @"date":self.date, @"deadline":[self getDeadline], @"titleAndPrio":[self getTitleAndPriority]};
     return result;
+}
+
+- (NSString*) getDeadline {
+    NSDateFormatter* df = [[NSDateFormatter alloc]init];
+    [df setDateFormat:@"MM/dd/yyyy"];
+    NSString *dateString = [df stringFromDate:self.date];
+    NSString *deadline = [@"Deadline: " stringByAppendingString: dateString];
+    return deadline;
+}
+
+- (NSString*) getTitleAndPriority {
+    return self.highPriority? [self.title stringByAppendingString:@" [Prio]"] : self.title;
 }
 
 @end

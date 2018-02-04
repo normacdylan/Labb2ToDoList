@@ -64,20 +64,13 @@
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"taskCell" forIndexPath:indexPath];
    
-    NSDictionary *encodedTask = [DBHandler loadTask:(int)indexPath.row finished:indexPath.section==0];
+    NSDictionary *task = [DBHandler loadTask:(int)indexPath.row finished:indexPath.section==0];
     
-    cell.textLabel.text = [[encodedTask objectForKey:@"highPriority"] boolValue]==NO?
-            [encodedTask objectForKey:@"title"] :
-            [[encodedTask objectForKey:@"title"] stringByAppendingString:@" [Prio]"];
+    cell.textLabel.text = [task objectForKey:@"titleAndPrio"];
     
-    //skapa metod i dbhandler för datumkonvertering?
-    NSDateFormatter* df = [[NSDateFormatter alloc]init];
-    [df setDateFormat:@"MM/dd/yyyy"];
-    NSString *dateString = [df stringFromDate:[encodedTask objectForKey:@"date"]];
-    NSString *deadLine = [@"Deadline: " stringByAppendingString: dateString];
-    cell.detailTextLabel.text = deadLine;
+    cell.detailTextLabel.text = [task objectForKey:@"deadline"];
     
-    if ([[encodedTask objectForKey:@"finished"] boolValue]==YES)
+    if ([[task objectForKey:@"finished"] boolValue]==YES)
         cell.accessoryType = UITableViewCellAccessoryCheckmark;
     else
         cell.accessoryType = UITableViewCellAccessoryNone;
@@ -97,7 +90,6 @@
 
 - (void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath {
     if (editingStyle == UITableViewCellEditingStyleDelete) {
-        // Delete the row from the data source
         [DBHandler deleteTask:(int)indexPath.row finished:indexPath.section==0];
         [tableView deleteRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationFade];
     } else if (editingStyle == UITableViewCellEditingStyleInsert) {

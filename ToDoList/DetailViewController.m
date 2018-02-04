@@ -33,18 +33,11 @@
 -(void) setup {
     NSDictionary *task = [DBHandler loadTask:self.taskIndex finished:self.finishedTask];
     
-    self.titleLabel.text = [[task objectForKey:@"highPriority"] boolValue]==NO?
-    [task objectForKey:@"title"] :
-    [[task objectForKey:@"title"] stringByAppendingString:@" [Prio]"];
+    self.titleLabel.text = [task objectForKey:@"titleAndPrio"];
     
     self.specificationText.text = [task objectForKey:@"specification"];
     
-    NSDateFormatter* df = [[NSDateFormatter alloc]init];
-    [df setDateFormat:@"MM/dd/yyyy"];
-    NSString *dateString = [df stringFromDate:[task objectForKey:@"date"]];
-    NSString *deadLine = [@"Deadline: " stringByAppendingString: dateString];
-    
-    self.dateLabel.text = deadLine;
+    self.dateLabel.text = [task objectForKey:@"deadline"];
     
     self.doneButton.enabled = !self.finishedTask;
 }
